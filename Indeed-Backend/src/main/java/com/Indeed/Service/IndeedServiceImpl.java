@@ -5,6 +5,7 @@ import com.Indeed.Model.Indeed;
 import com.Indeed.Repository.IndeedRepo;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,10 @@ public class IndeedServiceImpl implements IndeedService {
     indeed.setCreatedAt(Date.from(Instant.now()));
 
     return indeedRepo.save(indeed);
+  }
+
+  @Override
+  public List<Indeed> getAllPosts() {
+    return indeedRepo.findAll();
   }
 }
