@@ -24,8 +24,7 @@ public class IndeedServiceImpl implements IndeedService {
     indeed.setSalary(dto.getSalary());
     indeed.setType(dto.getType());
     indeed.setTechnology(dto.getTechnology());
-    indeed.setCreatedAt(Date.from(Instant.now()));
-
+    indeed.setCreatedAt(new Date());
     return indeedRepo.save(indeed);
   }
 
