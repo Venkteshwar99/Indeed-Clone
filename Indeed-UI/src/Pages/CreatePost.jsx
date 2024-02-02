@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 import { Typography, styled, Box, TextField, Button } from "@mui/material";
 import DropDown from "../Components/DropDown";
 import { savePost } from "../Services/Api";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { routePath } from "../Routes/Route";
 
 const Component = styled(Box)({

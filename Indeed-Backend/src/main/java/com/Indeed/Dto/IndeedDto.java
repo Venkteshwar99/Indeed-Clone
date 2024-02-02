@@ -2,18 +2,27 @@ package com.Indeed.Dto;
 
 import java.util.Arrays;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Indeed Model Information")
 public class IndeedDto {
 
+  @Schema(description = "Profile", example = "Java Developer")
   private String profile;
 
+  @Schema(description = "Type", example = "Online/Offline")
   private String type;
 
+  @Schema(description = "Description", example = "Java(multi-skilled) developer required")
   private String description;
 
+  @Schema(description = "Experience", example = "0-2 Years")
   private String experience;
 
+  @Schema(description = "Technology", example = "Java, React")
   private String technology[];
 
+  @Schema(description = "Salary", example = "Rs 0-300000")
   private String salary;
 
   public String getProfile() {

@@ -9,4 +9,6 @@ public interface IndeedService {
   public Indeed createPost(IndeedDto dto);
 
   public List<Indeed> getAllPosts();
+
+  public void deleteAllPosts();
 }

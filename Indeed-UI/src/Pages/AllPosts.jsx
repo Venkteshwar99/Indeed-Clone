@@ -9,7 +9,8 @@ const SearchWrapper = styled(Box)({
   display: "flex",
   justifyContent: "center",
   "& > div": {
-    width: 500,
+   width:'100%',
+    maxWidth: 500,
     height: 45,
     border: "1px solid #767676",
     borderRadius: 10,
@@ -25,26 +26,41 @@ const PostWrapper = styled(Box)({
   justifyContent: "center",
   marginTop: 50,
   flexWrap: "wrap",
+  gap:20,
   "& > div": {
     border: "1px solid #442d0",
     borderRadius: 10,
     margin: 10,
-    width: "30%",
+    width:'100%',
+    maxWidth: "30%",
     height: 290,
+    minWidth:250
   },
 });
 
 const AllPosts = () => {
   const [posts, setPosts] = useState([]);
   const [text, setText] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
+     try{
       const response = await getAllPosts();
-      setPosts(response.data);
+      setPosts(response.data);}
+      catch(error){
+       setError("API is not active or an error occurred.");  
+      }
     };
     getData();
   }, []);
+ 
+ if(error){
+   return (
+<><Header/>
+   <div style={{color:'red',fontSize:'18px',textAlign:'center',marginTop:'200px',fontWeight:'bold'}}>{error}</div>
+   </>
+)}
 
   return (
     <>
@@ -84,7 +100,10 @@ const AllPosts = () => {
                   <b>Experience</b>: {post.experience}
                 </Typography>
                 <Typography>
-                  <b>Technology</b>: {post.technology.map((item) => <span>{item+" "}</span>)}
+                  <b>Technology</b>:{" "}
+                  {post.technology.map((item) => (
+                    <span>{item + " "}</span>
+                  ))}
                 </Typography>
                 <Typography
                   style={{
