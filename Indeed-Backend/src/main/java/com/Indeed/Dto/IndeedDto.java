@@ -1,11 +1,13 @@
 package com.Indeed.Dto;
 
-import java.util.Arrays;
-
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.Arrays;
 
 @Schema(description = "Indeed Model Information")
 public class IndeedDto {
+
+  @Schema(description = "Id", example = "1")
+  private long id;
 
   @Schema(description = "Profile", example = "Java Developer")
   private String profile;
@@ -24,6 +26,14 @@ public class IndeedDto {
 
   @Schema(description = "Salary", example = "Rs 0-300000")
   private String salary;
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
 
   public String getProfile() {
     return profile;
@@ -76,6 +86,7 @@ public class IndeedDto {
   public IndeedDto() {}
 
   public IndeedDto(
+      long id,
       String profile,
       String type,
       String description,
@@ -83,6 +94,7 @@ public class IndeedDto {
       String[] technology,
       String salary) {
     super();
+    this.id = id;
     this.profile = profile;
     this.type = type;
     this.description = description;
@@ -93,7 +105,9 @@ public class IndeedDto {
 
   @Override
   public String toString() {
-    return "IndeedDto [profile="
+    return "IndeedDto [id="
+        + id
+        + ", profile="
         + profile
         + ", type="
         + type
